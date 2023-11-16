@@ -4,18 +4,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "FTNSSDK",
+    name: "FTPushSDK",
     products: [
         .library(
-            name: "FTNSSDK",
-            targets: ["FTNSSDK"]),
+            name: "FTPushSDK",
+            targets: ["FTPushSDK"]),
         .library(
             name: "XGExtension",
             targets: ["XGExtension"]),
     ],
     targets: [
         .target(
-            name: "FTNSSDK",
+            name: "FTPushSDK",
             dependencies: [
                 "XG_SDK_Cloud",
                 "XGInAppMessage",
