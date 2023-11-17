@@ -22,7 +22,7 @@ let package = Package(
                 "XGMTACloud",
             ],
             linkerSettings: [
-                .linkedLibrary("UserNotification")
+                .linkedFramework("UserNotifications")
             ]),
         .binaryTarget(name: "XG_SDK_Cloud", path: "XCFrameworks/XG_SDK_Cloud.xcframework"),
         .binaryTarget(name: "XGInAppMessage", path: "XCFrameworks/XGInAppMessage.xcframework"),
