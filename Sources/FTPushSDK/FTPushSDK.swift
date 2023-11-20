@@ -71,7 +71,8 @@ public class FTPushSDK: NSObject, XGPushDelegate {
     public static func clearPushConfig(_ appGroupIdentifier: String) {
         FTPushSDK.shared.appGroupIdentifier = appGroupIdentifier
         
-        if let sharedUserDefaults = UserDefaults(suiteName: appGroupIdentifier) {
+        if let sharedUserDefaults = UserDefaults(suiteName: appGroupIdentifier),
+           let _ = sharedUserDefaults.object(forKey: pushConfigSaveKey) {
             sharedUserDefaults.removeObject(forKey: pushConfigSaveKey)
         }
     }
