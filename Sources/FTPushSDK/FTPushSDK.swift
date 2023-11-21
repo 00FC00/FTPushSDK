@@ -67,6 +67,20 @@ public class FTPushSDK: NSObject, XGPushDelegate {
     /// 禁止初始化
     private override init() {}
     
+    public static var isTPNSDebug: Bool = false {
+        didSet {
+            XGPush.defaultManager().isEnableDebug = self.isTPNSDebug
+        }
+    }
+    
+    public static var badge: Int? {
+        didSet {
+            if let badge = badge {
+                XGPush.defaultManager().setBadge(badge)
+            }
+        }
+    }
+    
     /// 清除推送配置缓存
     public static func clearPushConfig(_ appGroupIdentifier: String) {
         FTPushSDK.shared.appGroupIdentifier = appGroupIdentifier
@@ -94,6 +108,18 @@ public class FTPushSDK: NSObject, XGPushDelegate {
         } else {
             print("FC+++++请先进行AppGroup绑定设置!!!")
         }
+    }
+    
+    /// 添加通知账号
+    /// - Parameter account: 番糖通行证账号，不区分类型
+    public static func upsertAccounts(_ account: String) {
+        // 不区分类型统一均为番糖账号，类型值为1
+        XGPushTokenManager.default().upsertAccounts(byDict: [NSNumber(1) : account])
+    }
+    
+    /// 清除所有设置的账号
+    public static func clearAccounts() {
+        XGPushTokenManager.default().clearAccounts()
     }
 }
 
